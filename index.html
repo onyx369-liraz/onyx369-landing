@@ -1,627 +1,843 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ONYX369 — AI Growth Platform · In a different league.</title>
-<meta name="description" content="ONYX369 is an AI-powered growth platform for small businesses. Three engines — Content, Leads, Revenue — built to scale your company without the overhead of a marketing team.">
-<meta name="keywords" content="AI marketing platform, lead generation software, AI content creation, SaaS for small business, marketing automation">
-<meta name="author" content="ONYX369">
-<meta property="og:title" content="ONYX369 — In a different league.">
-<meta property="og:description" content="The AI growth platform for businesses that refuse to be ordinary.">
-<meta property="og:url" content="https://onyx369.ai">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://onyx369.ai">
+<title>ONYX369 — In a different league.</title>
+<meta name="description" content="The AI growth platform that generates content, captures leads, and fills your pipeline — automatically.">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
-    background: #0A0A0A;
-    color: #FAFAFA;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-  }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-  a { color: inherit; text-decoration: none; }
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300&family=DM+Mono:wght@300;400&display=swap');
 
-  /* NAV */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --onyx:      #0A0A0A;
+    --jet:       #1C1C1E;
+    --carbon:    #3A3A3C;
+    --ash:       #8D8D93;
+    --silver:    #E5E5EA;
+    --cloud:     #F2F2F7;
+    --pearl:     #FAFAFA;
+    --gold:      #C9A96E;
+    --gold-lt:   #EDD9A3;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-mono:  'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--onyx);
+    color: var(--pearl);
+    font-family: var(--font-mono);
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── WATERMARK ── */
+  .watermark {
+    position: fixed;
+    top: 50%;
+    right: -120px;
+    transform: translateY(-50%) rotate(15deg);
+    width: 600px;
+    height: 600px;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    padding: 20px 32px;
-    background: rgba(10,10,10,0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 0.5px solid #1C1C1E;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 24px 48px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(58,58,60,0.4);
   }
-  .logo { display: flex; align-items: center; gap: 14px; }
-  .logo-mark { width: 32px; height: 32px; }
-  .logo-text {
-    font-size: 16px;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-  }
-  .logo-text .dim { opacity: 0.4; font-weight: 200; }
-  .nav-links { display: flex; gap: 32px; font-size: 13px; font-weight: 400; color: #8D8D93; }
-  .nav-links a:hover { color: #FAFAFA; transition: color 0.2s; }
-  .nav-cta {
-    padding: 10px 22px;
-    background: #FAFAFA;
-    color: #0A0A0A;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 500;
-    transition: transform 0.2s;
-  }
-  .nav-cta:hover { transform: scale(1.03); }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
+  .nav-mark {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 120px 32px 80px;
-    text-align: center;
-    position: relative;
+    gap: 14px;
+    text-decoration: none;
   }
-  .hero-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2.4px;
+
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .wordmark-main {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--pearl);
+  }
+
+  .wordmark-main span {
+    font-weight: 300;
+    opacity: 0.35;
+  }
+
+  .wordmark-sub {
+    font-size: 8px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #C9A96E;
-    margin-bottom: 32px;
-    opacity: 0.8;
+    color: var(--ash);
+    opacity: 0.5;
+    margin-top: 3px;
   }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--onyx);
+    background: var(--pearl);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201,169,110,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
   .hero-title {
-    font-size: clamp(40px, 7vw, 88px);
+    font-family: var(--font-serif);
+    font-size: clamp(52px, 8vw, 120px);
     font-weight: 200;
     letter-spacing: -2px;
-    line-height: 1.05;
-    margin-bottom: 28px;
-    max-width: 900px;
+    line-height: 0.95;
+    color: var(--pearl);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
   }
-  .hero-subtitle {
-    font-size: clamp(16px, 1.6vw, 20px);
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--ash);
+  }
+
+  .hero-gold-line {
+    width: 1px;
+    height: 60px;
+    background: var(--gold);
+    margin: 32px auto;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-sub {
+    font-size: 13px;
     font-weight: 300;
-    color: #8D8D93;
-    max-width: 620px;
-    margin: 0 auto 48px;
-    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: var(--ash);
+    max-width: 480px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+    margin-bottom: 48px;
   }
-  .hero-cta {
-    display: inline-flex;
+
+  .hero-actions {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 16px 36px;
-    background: #FAFAFA;
-    color: #0A0A0A;
-    border-radius: 100px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: transform 0.2s;
-  }
-  .hero-cta:hover { transform: scale(1.03); }
-  .hero-note {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #3A3A3C;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
   }
 
-  /* SECTION */
-  section { padding: 120px 0; border-top: 0.5px solid #1C1C1E; }
-  .section-label {
+  .btn-primary {
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2.4px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #8D8D93;
-    margin-bottom: 24px;
-  }
-  .section-title {
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 200;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
-    max-width: 800px;
-    margin-bottom: 24px;
-  }
-  .section-intro {
-    font-size: 17px;
-    color: #8D8D93;
-    max-width: 620px;
-    line-height: 1.6;
-    margin-bottom: 72px;
+    color: var(--onyx);
+    background: var(--pearl);
+    border: none;
+    padding: 16px 40px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
   }
 
-  /* ENGINES */
-  .engines {
+  .btn-primary:hover {
+    background: var(--gold-lt);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--pearl); }
+
+  /* ── SECTION BASE ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--carbon);
+    max-width: 60px;
+  }
+
+  /* ── ENGINES ── */
+  .engines-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: #1C1C1E;
-    border: 0.5px solid #1C1C1E;
+    background: var(--carbon);
+    border: 0.5px solid var(--carbon);
     border-radius: 14px;
     overflow: hidden;
+    margin-top: 48px;
   }
-  .engine {
-    background: #0A0A0A;
+
+  .engine-card {
+    background: var(--jet);
     padding: 48px 40px;
     transition: background 0.3s;
   }
-  .engine:hover { background: #1C1C1E; }
-  .engine-num {
-    font-size: 44px;
+
+  .engine-card:hover { background: #222224; }
+
+  .engine-number {
+    font-family: var(--font-serif);
+    font-size: 72px;
     font-weight: 200;
-    color: #3A3A3C;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-  }
-  .engine h3 {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 12px;
-    letter-spacing: -0.3px;
-  }
-  .engine p {
-    font-size: 14px;
-    color: #8D8D93;
-    line-height: 1.6;
+    line-height: 1;
+    color: var(--carbon);
+    margin-bottom: 24px;
+    letter-spacing: -2px;
   }
 
-  /* TESLA STORY */
-  .tesla {
-    text-align: center;
-    padding: 140px 32px;
-    border-top: 0.5px solid #1C1C1E;
-    border-bottom: 0.5px solid #1C1C1E;
-  }
-  .tesla-quote {
-    font-size: clamp(24px, 3.2vw, 40px);
-    font-weight: 200;
-    line-height: 1.3;
-    letter-spacing: -0.8px;
-    max-width: 820px;
-    margin: 0 auto 32px;
-    color: #FAFAFA;
-  }
-  .tesla-attribution {
-    font-size: 12px;
-    letter-spacing: 2px;
+  .engine-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #C9A96E;
-    font-weight: 500;
+    color: var(--pearl);
+    margin-bottom: 16px;
   }
 
-  /* FOR WHO */
-  .audience {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
-    margin-top: 56px;
+  .engine-desc {
+    font-size: 12px;
+    color: var(--ash);
+    line-height: 1.8;
   }
-  .audience-item {
-    padding: 24px;
-    border: 0.5px solid #1C1C1E;
-    border-radius: 14px;
-    font-size: 14px;
-    color: #E5E5EA;
+
+  /* ── TESLA ── */
+  .tesla-section {
+    text-align: center;
+    padding: 80px 48px;
+    border-top: 0.5px solid var(--carbon);
+    border-bottom: 0.5px solid var(--carbon);
+    max-width: 100%;
+    background: var(--jet);
   }
-  .audience-item strong {
-    display: block;
-    font-size: 13px;
-    color: #FAFAFA;
-    font-weight: 500;
-    margin-bottom: 6px;
-    letter-spacing: -0.2px;
-  }
-  .audience-item span {
-    font-size: 13px;
-    color: #8D8D93;
+
+  .tesla-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 200;
+    font-style: italic;
+    color: var(--ash);
+    max-width: 700px;
+    margin: 0 auto 24px;
     line-height: 1.5;
+    letter-spacing: -0.5px;
   }
 
-  /* PRICING */
+  .tesla-attr {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--carbon);
+  }
+
+  /* ── PROOF STATS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--carbon);
+    border: 0.5px solid var(--carbon);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .stat-card {
+    background: var(--onyx);
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 200;
+    color: var(--pearl);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  /* ── PRICING ── */
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 48px;
   }
-  .plan {
-    padding: 40px 32px;
-    border: 0.5px solid #1C1C1E;
+
+  .pricing-card {
+    background: var(--jet);
+    border: 0.5px solid var(--carbon);
     border-radius: 14px;
-    background: #0A0A0A;
-    transition: border-color 0.3s;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
   }
-  .plan:hover { border-color: #3A3A3C; }
-  .plan.featured { border: 0.5px solid #C9A96E; position: relative; }
-  .plan-badge {
+
+  .pricing-card:hover {
+    border-color: var(--ash);
+    transform: translateY(-4px);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--gold);
+    background: #1a1a1c;
+  }
+
+  .pricing-card.featured::before {
+    content: 'MOST POPULAR';
     position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0A0A0A;
-    border: 0.5px solid #C9A96E;
-    color: #EDD9A3;
-    font-size: 9px;
-    font-weight: 500;
+    top: 20px;
+    right: 20px;
+    font-size: 7px;
+    font-weight: 400;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 14px;
+    color: var(--gold);
+    border: 0.5px solid var(--gold);
+    padding: 4px 8px;
     border-radius: 100px;
   }
-  .plan-name {
-    font-size: 11px;
-    letter-spacing: 2px;
+
+  .pricing-tier {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #8D8D93;
-    margin-bottom: 20px;
-    font-weight: 500;
+    color: var(--ash);
+    margin-bottom: 24px;
   }
-  .plan-price {
-    font-size: 44px;
+
+  .pricing-price {
+    font-family: var(--font-serif);
+    font-size: 52px;
     font-weight: 200;
+    color: var(--pearl);
     letter-spacing: -2px;
+    line-height: 1;
     margin-bottom: 4px;
   }
-  .plan-price span {
-    font-size: 14px;
-    color: #8D8D93;
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-  .plan-tagline {
-    font-size: 13px;
-    color: #8D8D93;
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 0.5px solid #1C1C1E;
-  }
-  .plan ul {
-    list-style: none;
+
+  .pricing-period {
+    font-size: 10px;
+    color: var(--ash);
+    letter-spacing: 1px;
     margin-bottom: 32px;
   }
-  .plan li {
-    font-size: 13px;
-    padding: 8px 0;
-    color: #E5E5EA;
-    display: flex;
-    gap: 10px;
-  }
-  .plan li::before {
-    content: "·";
-    color: #C9A96E;
-    font-weight: 700;
-  }
-  .plan-cta {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 13px;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-  .plan-cta.primary {
-    background: #FAFAFA;
-    color: #0A0A0A;
-  }
-  .plan-cta.primary:hover { transform: scale(1.02); }
-  .plan-cta.outline {
-    background: transparent;
-    color: #FAFAFA;
-    border: 0.5px solid #3A3A3C;
-  }
-  .plan-cta.outline:hover { border-color: #FAFAFA; }
 
-  /* FAQ */
-  .faq-item {
-    border-bottom: 0.5px solid #1C1C1E;
-    padding: 28px 0;
+  .pricing-divider {
+    height: 0.5px;
+    background: var(--carbon);
+    margin-bottom: 32px;
   }
-  .faq-item h4 {
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: -0.3px;
+
+  .pricing-features {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 40px;
+  }
+
+  .pricing-features li {
+    font-size: 11px;
+    color: var(--ash);
+    padding: 8px 0;
+    border-bottom: 0.5px solid rgba(58,58,60,0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pricing-features li::before {
+    content: '→';
+    color: var(--carbon);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .pricing-cta {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 100px;
+    transition: all 0.25s;
+    border: 0.5px solid var(--carbon);
+    color: var(--pearl);
+    background: transparent;
+  }
+
+  .pricing-cta:hover {
+    border-color: var(--pearl);
+    background: var(--pearl);
+    color: var(--onyx);
+  }
+
+  .pricing-card.featured .pricing-cta {
+    background: var(--pearl);
+    color: var(--onyx);
+    border-color: var(--pearl);
+  }
+
+  .pricing-card.featured .pricing-cta:hover {
+    background: var(--gold-lt);
+    border-color: var(--gold-lt);
+  }
+
+  /* ── ICP ── */
+  .icp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--carbon);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 0.5px solid var(--carbon);
+  }
+
+  .icp-card {
+    background: var(--onyx);
+    padding: 36px 32px;
+  }
+
+  .icp-title {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--pearl);
     margin-bottom: 12px;
   }
-  .faq-item p {
-    font-size: 14px;
-    color: #8D8D93;
+
+  .icp-desc {
+    font-size: 11px;
+    color: var(--ash);
     line-height: 1.7;
   }
 
-  /* CTA SECTION */
+  /* ── FINAL CTA ── */
   .final-cta {
     text-align: center;
-    padding: 140px 32px;
-  }
-  .final-cta h2 {
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 200;
-    letter-spacing: -1.8px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .final-cta p {
-    font-size: 17px;
-    color: #8D8D93;
-    max-width: 520px;
-    margin: 0 auto 44px;
+    padding: 120px 48px;
+    max-width: 100%;
+    border-top: 0.5px solid var(--carbon);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* FOOTER */
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(201,169,110,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-title {
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 6vw, 90px);
+    font-weight: 200;
+    letter-spacing: -2px;
+    line-height: 1;
+    color: var(--pearl);
+    margin-bottom: 24px;
+  }
+
+  .final-sub {
+    font-size: 12px;
+    color: var(--ash);
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── FOOTER ── */
   footer {
-    border-top: 0.5px solid #1C1C1E;
-    padding: 60px 32px 48px;
-  }
-  .footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
+    border-top: 0.5px solid var(--carbon);
+    padding: 32px 48px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 32px;
+    justify-content: space-between;
   }
-  .footer-brand {
-    font-size: 11px;
-    color: #3A3A3C;
+
+  .footer-left {
+    font-size: 9px;
+    color: var(--carbon);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    font-size: 9px;
+    color: var(--carbon);
     letter-spacing: 1px;
   }
-  .footer-links {
-    display: flex;
-    gap: 28px;
-    font-size: 12px;
-    color: #8D8D93;
-  }
-  .footer-links a:hover { color: #FAFAFA; }
-  .footer-tagline {
-    font-size: 9px;
-    letter-spacing: 2.4px;
-    text-transform: uppercase;
-    color: #3A3A3C;
-    margin-top: 32px;
-    text-align: center;
-  }
-  .footer-tagline .dot { color: #C9A96E; }
 
-  /* RESPONSIVE */
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .container { padding: 0 20px; }
-    nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    section { padding: 80px 0; }
-    .engines { grid-template-columns: 1fr; }
+    nav { padding: 20px 24px; }
+    section { padding: 64px 24px; }
+    .engines-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .pricing-grid { grid-template-columns: 1fr; }
-    .footer-grid { flex-direction: column; text-align: center; }
+    .icp-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .hero-actions { flex-direction: column; }
+    .hero-title { letter-spacing: -1px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- Tesla 369 Watermark -->
+<svg class="watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="100,10 190,60 190,140 100,190 10,140 10,60" stroke="white" stroke-width="1" fill="none"/>
+  <polygon points="100,40 160,75 160,125 100,160 40,125 40,75" stroke="white" stroke-width="0.5" fill="none"/>
+  <polygon points="100,70 130,87 130,112 100,130 70,112 70,87" stroke="white" stroke-width="0.3" fill="none"/>
+  <text x="100" y="107" text-anchor="middle" font-size="18" fill="white" font-family="monospace" font-weight="200">369</text>
+</svg>
+
+<!-- Nav -->
 <nav>
-  <div class="logo">
-    <svg class="logo-mark" viewBox="0 0 56 56" fill="none">
-      <polygon points="28.000,8.500 44.887,18.250 44.887,37.750 28.000,47.500 11.113,37.750 11.113,18.250" stroke="#FAFAFA" stroke-width="2.2" fill="none"/>
-      <polygon points="28.000,19.000 35.794,23.500 35.794,32.500 28.000,37.000 20.206,32.500 20.206,23.500" fill="#FAFAFA"/>
+  <a href="#" class="nav-mark">
+    <svg width="32" height="32" viewBox="0 0 56 56" fill="none">
+      <polygon points="28,8.536 47.053,19.5 47.053,36.5 28,47.464 8.947,36.5 8.947,19.5" stroke="#FAFAFA" stroke-width="2.2" fill="none"/>
+      <polygon points="28,21.196 36.124,25.9 36.124,30.1 28,34.804 19.876,30.1 19.876,25.9" fill="#FAFAFA"/>
     </svg>
-    <div class="logo-text">ONYX<span class="dim">369</span></div>
-  </div>
-  <div class="nav-links">
-    <a href="#engines">Platform</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-  </div>
-  <a href="mailto:hello@onyx369.ai" class="nav-cta">Get Started</a>
+    <div class="wordmark">
+      <div class="wordmark-main">ONYX<span>369</span></div>
+      <div class="wordmark-sub">AI Growth Platform</div>
+    </div>
+  </a>
+  <a href="#pricing" class="nav-cta">Get started</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-label">AI Growth Platform</div>
-    <h1 class="hero-title">In a different league.</h1>
-    <p class="hero-subtitle">Content. Leads. Revenue. Three engines, one platform — built for businesses that refuse to be ordinary.</p>
-    <a href="#pricing" class="hero-cta">See plans →</a>
-    <p class="hero-note">Trusted by small businesses and marketing agencies across the United States.</p>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">AI Growth Platform · onyx369.ai</div>
+  <h1 class="hero-title">In a different<br><em>league.</em></h1>
+  <div class="hero-gold-line"></div>
+  <p class="hero-sub">The AI platform that generates content, captures leads, and fills your pipeline — automatically. Built for businesses that refuse to be ordinary.</p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">Start growing today</a>
+    <a href="#how" class="btn-ghost">See how it works →</a>
   </div>
-</section>
+</div>
 
-<!-- THREE ENGINES -->
-<section id="engines">
-  <div class="container">
-    <div class="section-label">The platform</div>
-    <h2 class="section-title">Three engines. One mission.</h2>
-    <p class="section-intro">ONYX369 replaces the marketing team, lead generation agency, and CRM you were going to hire — with a single AI-powered platform that runs on autopilot.</p>
+<!-- Tesla Quote -->
+<div class="tesla-section">
+  <p class="tesla-quote">"If you only knew the magnificence of the 3, 6 and 9, then you would have a key to the universe."</p>
+  <p class="tesla-attr">Nikola Tesla · The pattern behind ONYX369</p>
+</div>
 
-    <div class="engines">
-      <div class="engine">
-        <div class="engine-num">3</div>
-        <h3>Content Engine</h3>
-        <p>AI writes your posts, articles, video scripts, email campaigns, and ad copy — in your voice, on your schedule, across every platform.</p>
-      </div>
-      <div class="engine">
-        <div class="engine-num">6</div>
-        <h3>Lead Engine</h3>
-        <p>Automated prospecting, AI lead scoring, and personalized outreach — sourcing and qualifying thousands of prospects while you sleep.</p>
-      </div>
-      <div class="engine">
-        <div class="engine-num">9</div>
-        <h3>Revenue Engine</h3>
-        <p>Client portal, CRM pipeline, automated invoicing, Stripe billing, and AI-generated monthly reports — every dollar tracked, every client retained.</p>
-      </div>
+<!-- The Three Engines -->
+<section id="how">
+  <div class="section-label">The platform</div>
+  <h2 class="reveal" style="font-family: var(--font-serif); font-size: clamp(32px, 4vw, 56px); font-weight: 200; letter-spacing: -1.5px; line-height: 1.1; max-width: 600px;">Three engines.<br>One growth machine.</h2>
+  <div class="engines-grid reveal">
+    <div class="engine-card">
+      <div class="engine-number">3</div>
+      <div class="engine-title">Content Engine</div>
+      <p class="engine-desc">Posts, articles, video scripts, ad copy, email campaigns — generated in seconds in your brand's exact voice. 30 pieces of content per month, automatically.</p>
+    </div>
+    <div class="engine-card">
+      <div class="engine-number">6</div>
+      <div class="engine-title">Lead Engine</div>
+      <p class="engine-desc">AI finds, scores, and reaches out to thousands of potential clients. Your CRM fills automatically. Hot leads are flagged instantly. You only talk to the ones ready to buy.</p>
+    </div>
+    <div class="engine-card">
+      <div class="engine-number">9</div>
+      <div class="engine-title">Revenue Engine</div>
+      <p class="engine-desc">Invoicing, CRM pipeline, client portal, monthly reports — all automated. Every client gets a premium white-glove experience without you lifting a finger.</p>
     </div>
   </div>
 </section>
 
-<!-- TESLA -->
-<section class="tesla">
-  <div class="container">
-    <p class="tesla-quote">"If you only knew the magnificence of the 3, 6 and 9, then you would have a key to the universe."</p>
-    <p class="tesla-attribution">— Nikola Tesla</p>
-  </div>
-</section>
-
-<!-- WHO IT'S FOR -->
+<!-- Stats -->
 <section>
-  <div class="container">
-    <div class="section-label">For whom</div>
-    <h2 class="section-title">Built for operators, not enterprises.</h2>
-    <p class="section-intro">ONYX369 serves ambitious small businesses and the agencies that scale them — across the United States and beyond.</p>
-
-    <div class="audience">
-      <div class="audience-item">
-        <strong>Home services</strong>
-        <span>Contractors · HVAC · plumbing · roofing</span>
-      </div>
-      <div class="audience-item">
-        <strong>Fitness &amp; wellness</strong>
-        <span>Studios · coaches · personal trainers</span>
-      </div>
-      <div class="audience-item">
-        <strong>Real estate</strong>
-        <span>Agents · teams · brokerages</span>
-      </div>
-      <div class="audience-item">
-        <strong>Food &amp; hospitality</strong>
-        <span>Restaurants · cafés · catering</span>
-      </div>
-      <div class="audience-item">
-        <strong>Professional services</strong>
-        <span>Consultants · coaches · legal · financial</span>
-      </div>
-      <div class="audience-item">
-        <strong>Marketing agencies</strong>
-        <span>White-label ONYX369 to your clients</span>
-      </div>
+  <div class="section-label">By the numbers</div>
+  <div class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="stat-number">95%</div>
+      <div class="stat-label">AI does the work</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2h</div>
+      <div class="stat-label">Per client / month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10x</div>
+      <div class="stat-label">Your current capacity</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0.7%</div>
+      <div class="stat-label">Infra cost vs revenue</div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- Who It's For -->
+<section>
+  <div class="section-label">Who it's for</div>
+  <h2 class="reveal" style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 48px); font-weight: 200; letter-spacing: -1px; margin-bottom: 40px;">Built for businesses<br>they ignore.</h2>
+  <div class="icp-grid reveal">
+    <div class="icp-card">
+      <div class="icp-title">Contractors & Trades</div>
+      <p class="icp-desc">Roofing, HVAC, plumbing, general contractors. Strong ROI need. Active on Facebook. Need leads, not likes.</p>
+    </div>
+    <div class="icp-card">
+      <div class="icp-title">Fitness & Wellness</div>
+      <p class="icp-desc">Studios, coaches, trainers. Instagram-heavy, community-driven. Content is the product — we generate it daily.</p>
+    </div>
+    <div class="icp-card">
+      <div class="icp-title">Real Estate</div>
+      <p class="icp-desc">Agents and brokers. High volume, strong content need. LinkedIn presence required. Lead gen is core.</p>
+    </div>
+    <div class="icp-card">
+      <div class="icp-title">Restaurants & Hospitality</div>
+      <p class="icp-desc">Need Instagram and Facebook management badly. We generate daily content and respond to inbound automatically.</p>
+    </div>
+    <div class="icp-card">
+      <div class="icp-title">Marketing Agencies</div>
+      <p class="icp-desc">White-label ONYX369 to your clients. You collect the margin. We do the work. Your brand, our engine.</p>
+    </div>
+    <div class="icp-card">
+      <div class="icp-title">Startups & Founders</div>
+      <p class="icp-desc">No time. No marketing team. Need results fast — not a 6-month strategy. ONYX369 is your full marketing department.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
 <section id="pricing">
-  <div class="container">
-    <div class="section-label">Pricing</div>
-    <h2 class="section-title">Three plans. No contracts.</h2>
-    <p class="section-intro">Every plan includes full access to the platform. Scale up or down any month. Cancel anytime.</p>
+  <div class="section-label">Pricing</div>
+  <h2 class="reveal" style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 48px); font-weight: 200; letter-spacing: -1px; margin-bottom: 8px;">Simple pricing.<br>Extraordinary results.</h2>
+  <p class="reveal" style="font-size: 12px; color: var(--ash); margin-bottom: 0;">Cancel anytime. No contracts. No hidden fees.</p>
 
-    <div class="pricing-grid">
-      <div class="plan">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price">$499<span>/mo</span></div>
-        <div class="plan-tagline">For owner-operators ready to systemize their marketing.</div>
-        <ul>
-          <li>12 posts per month (3 per week)</li>
-          <li>Basic lead generation pipeline</li>
-          <li>AI-generated monthly client report</li>
-          <li>Email support</li>
-        </ul>
-        <a href="mailto:hello@onyx369.ai?subject=ONYX369%20Starter%20Plan" class="plan-cta outline">Get Starter</a>
-      </div>
+  <div class="pricing-grid">
 
-      <div class="plan featured">
-        <div class="plan-badge">Most popular</div>
-        <div class="plan-name">Pro</div>
-        <div class="plan-price">$799<span>/mo</span></div>
-        <div class="plan-tagline">For businesses scaling to the next level with AI.</div>
-        <ul>
-          <li>30 posts per month (daily publishing)</li>
-          <li>Active AI lead outreach + scoring</li>
-          <li>Inbox AI sales assistant (24/7)</li>
-          <li>Weekly check-in call</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="mailto:hello@onyx369.ai?subject=ONYX369%20Pro%20Plan" class="plan-cta primary">Get Pro</a>
-      </div>
-
-      <div class="plan">
-        <div class="plan-name">Agency</div>
-        <div class="plan-price">$1,499<span>/mo</span></div>
-        <div class="plan-tagline">For agencies and high-growth operations.</div>
-        <ul>
-          <li>Full 30-day content calendar</li>
-          <li>Daily automated posting</li>
-          <li>Complete CRM with pipeline tracking</li>
-          <li>Monthly ad copy + creative</li>
-          <li>Bi-weekly strategy calls</li>
-        </ul>
-        <a href="mailto:hello@onyx369.ai?subject=ONYX369%20Agency%20Plan" class="plan-cta outline">Get Agency</a>
-      </div>
+    <!-- Starter -->
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Starter</div>
+      <div class="pricing-price">$499</div>
+      <div class="pricing-period">per month</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>12 posts per month (3/week)</li>
+        <li>Basic lead generation</li>
+        <li>Monthly AI client report</li>
+        <li>Email support</li>
+        <li>Content calendar</li>
+        <li>Brand strategy generation</li>
+      </ul>
+      <a href="https://buy.stripe.com/5kQ14m7iJ8En0o40Lc7ss01" class="pricing-cta">Get started</a>
     </div>
-  </div>
-</section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="container">
-    <div class="section-label">Frequently asked</div>
-    <h2 class="section-title">Questions.</h2>
-
-    <div style="max-width: 780px; margin-top: 48px;">
-      <div class="faq-item">
-        <h4>What is ONYX369?</h4>
-        <p>ONYX369 is a SaaS platform that gives small businesses and marketing agencies AI-powered tools for content creation, lead generation, CRM, and client reporting. It replaces the marketing team you were going to hire.</p>
-      </div>
-      <div class="faq-item">
-        <h4>How does billing work?</h4>
-        <p>Monthly subscriptions billed through Stripe. No contracts, no setup fees. Cancel or change plans any time from your dashboard.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Is my data secure?</h4>
-        <p>Yes. ONYX369 runs on Supabase with row-level security, meaning every client's data is fully isolated. All traffic is encrypted via Cloudflare and SSL. We never sell or share client data.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Do I need technical skills?</h4>
-        <p>No. ONYX369 is built for business owners, not developers. If you can send an email, you can run the platform.</p>
-      </div>
-      <div class="faq-item">
-        <h4>What kind of businesses is this for?</h4>
-        <p>Service-based small businesses (contractors, fitness, real estate, restaurants, professional services) and the marketing agencies that serve them. Typical customers are 1–50 employees in the United States.</p>
-      </div>
-      <div class="faq-item">
-        <h4>How do I get started?</h4>
-        <p>Email <a href="mailto:hello@onyx369.ai" style="color: #C9A96E;">hello@onyx369.ai</a> to schedule a 15-minute demo. We'll walk through the platform on your actual business and show you exactly how it works.</p>
-      </div>
+    <!-- Pro (featured) -->
+    <div class="pricing-card featured reveal">
+      <div class="pricing-tier">Pro</div>
+      <div class="pricing-price">$799</div>
+      <div class="pricing-period">per month</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>30 posts per month (daily)</li>
+        <li>Active lead outreach</li>
+        <li>Inbox AI — 24/7 DM handling</li>
+        <li>Weekly check-in call</li>
+        <li>Monthly AI report</li>
+        <li>Full CRM pipeline</li>
+      </ul>
+      <a href="https://buy.stripe.com/cNi3cu46x8En1s865w7ss00" class="pricing-cta">Get started</a>
     </div>
+
+    <!-- Agency -->
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Agency</div>
+      <div class="pricing-price">$1,499</div>
+      <div class="pricing-period">per month</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Full 30-day content calendar</li>
+        <li>Daily auto-posting</li>
+        <li>Full CRM management</li>
+        <li>Ad copy monthly</li>
+        <li>Priority support</li>
+        <li>Bi-weekly strategy calls</li>
+      </ul>
+      <a href="https://buy.stripe.com/fZu9ASauVg6P6Ms79A7ss02" class="pricing-cta">Get started</a>
+    </div>
+
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="container">
-    <h2>Ready to be<br>in a different league?</h2>
-    <p>Start with a 15-minute demo. No pressure, no contract. See the platform working live on your business.</p>
-    <a href="mailto:hello@onyx369.ai?subject=Book%20a%20Demo" class="hero-cta">Book a demo →</a>
+<!-- Final CTA -->
+<div class="final-cta">
+  <h2 class="final-title reveal">Ready to be<br><em style="font-family: var(--font-serif); font-style: italic; color: var(--ash);">in a different league?</em></h2>
+  <p class="final-sub reveal">Join the businesses that refuse to be ordinary.</p>
+  <div class="reveal">
+    <a href="#pricing" class="btn-primary">Start today — from $499/mo</a>
   </div>
-</section>
+  <p class="reveal" style="margin-top: 24px; font-size: 9px; color: var(--carbon); letter-spacing: 2px; text-transform: uppercase;">3 · 6 · 9 · onyx369.ai</p>
+</div>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">© 2026 ONYX369</div>
-    <div class="footer-links">
-      <a href="mailto:hello@onyx369.ai">hello@onyx369.ai</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-    </div>
-  </div>
-  <div class="footer-tagline">3 <span class="dot">·</span> 6 <span class="dot">·</span> 9 &nbsp;&nbsp;&nbsp; IN A DIFFERENT LEAGUE</div>
+  <div class="footer-left">© 2026 ONYX369 · All rights reserved</div>
+  <div class="footer-right">hello@onyx369.ai · In a different league.</div>
 </footer>
 
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Stagger children in grids
+  document.querySelectorAll('.engines-grid, .stats-grid, .pricing-grid, .icp-grid').forEach(grid => {
+    grid.querySelectorAll(':scope > *').forEach((child, i) => {
+      child.style.transitionDelay = `${i * 0.08}s`;
+    });
+  });
+</script>
 </body>
 </html>
