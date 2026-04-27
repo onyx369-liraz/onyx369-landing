@@ -1,67 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ONYX369 — AI Growth Platform</title>
 
 <style>
 body {
-  margin: 0;
+  margin:0;
   font-family: Arial, sans-serif;
-  background: #050505;
-  color: white;
-  text-align: center;
+  background:#050505;
+  color:#fff;
 }
 
+/* Background glow */
+body::before {
+  content:"";
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:800px;
+  height:800px;
+  transform:translate(-50%,-50%);
+  background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+  z-index:-1;
+}
+
+/* Header */
 header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+  font-weight:bold;
+  letter-spacing:2px;
+  color:#D4AF37;
+}
+
+nav a {
+  margin:0 15px;
+  color:#aaa;
+  text-decoration:none;
 }
 
 .btn {
-  padding: 12px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 1px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:#D4AF37;
+  color:#000;
+  text-decoration:none;
 }
 
-.btn-primary {
-  background: gold;
-  color: black;
-}
-
-.btn-ghost {
-  border: 1px solid white;
-  color: white;
-}
-
+/* Hero */
 .hero {
-  padding: 120px 20px;
+  text-align:center;
+  padding:100px 20px;
 }
 
-h1 {
-  font-size: 64px;
-  margin: 0;
+.hero h1 {
+  font-size:48px;
 }
 
-h1 span {
-  color: gold;
+.hero span {
+  color:#D4AF37;
 }
 
-.section {
-  padding: 80px 20px;
+.hero p {
+  color:#aaa;
+  margin:20px 0;
+}
+
+/* Dashboard mock */
+.dashboard {
+  max-width:1000px;
+  margin:40px auto;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:30px;
+}
+
+/* Cards */
+.cards {
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
 }
 
 .card {
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 30px;
-  border-radius: 16px;
-  margin: 20px auto;
-  max-width: 300px;
+  flex:1;
+  min-width:250px;
+  background:rgba(255,255,255,0.03);
+  padding:20px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* Pricing */
+.pricing {
+  padding:80px 20px;
+  text-align:center;
+}
+
+.price-cards {
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.price-card {
+  width:260px;
+  padding:30px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* Footer */
+footer {
+  padding:40px;
+  text-align:center;
+  color:#777;
 }
 </style>
 </head>
@@ -69,59 +133,72 @@ h1 span {
 <body>
 
 <header>
-  <div>ONYX369</div>
-
-  <div>
-    <!-- ✅ FIXED LOGIN LINK -->
-    <a class="btn btn-ghost" href="https://app.onyx369.ai/client-access">Log In</a>
-
-    <a class="btn btn-primary" href="#pricing">Sign Up</a>
-  </div>
+  <div class="logo">ONYX369</div>
+  <nav>
+    <a href="#">Platform</a>
+    <a href="#">Pricing</a>
+    <a href="https://app.onyx369.ai/client-access">Login</a>
+  </nav>
+  <a class="btn" href="#pricing">Start Growing</a>
 </header>
 
-<div class="hero">
-  <h1>In a <span>different</span> league.</h1>
-  <p>AI Growth Platform for Content, Leads, and Revenue.</p>
+<section class="hero">
+  <h1>AI Growth Platform<br><span>In a different league.</span></h1>
+  <p>Content. Leads. Revenue. One intelligent system.</p>
+  <a class="btn" href="#pricing">Start Growing</a>
+</section>
 
-  <br/>
+<section class="dashboard">
+  <div class="cards">
+    <div class="card">
+      <h3>Content Engine</h3>
+      <p>AI content that converts</p>
+      <h2>128</h2>
+    </div>
 
-  <!-- ✅ ALSO CONNECTED BUTTON -->
-  <a class="btn btn-primary" href="https://app.onyx369.ai/client-access">Start Growing</a>
-</div>
+    <div class="card">
+      <h3>Leads Engine</h3>
+      <p>Automated lead generation</p>
+      <h2>342</h2>
+    </div>
 
-<div class="section" id="platform">
-  <h2>Platform</h2>
+    <div class="card">
+      <h3>Revenue Engine</h3>
+      <p>Growth optimization</p>
+      <h2>$24,580</h2>
+    </div>
+  </div>
+</section>
 
-  <div class="card">Content Engine</div>
-  <div class="card">Lead Engine</div>
-  <div class="card">Revenue Engine</div>
-</div>
-
-<div class="section" id="pricing">
+<section id="pricing" class="pricing">
   <h2>Pricing</h2>
 
-  <div class="card">
-    <h3>Starter</h3>
-    <p>$369 / month</p>
+  <div class="price-cards">
 
-    <!-- ⚠️ Replace later with real Stripe -->
-    <a class="btn btn-ghost" href="#">Buy</a>
+    <div class="price-card">
+      <h3>Starter</h3>
+      <h1>$369</h1>
+      <a class="btn" href="https://buy.stripe.com/PLACEHOLDER_STARTER">Buy</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Pro</h3>
+      <h1>$599</h1>
+      <a class="btn" href="https://buy.stripe.com/PLACEHOLDER_PRO">Buy</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Agency</h3>
+      <h1>$1199</h1>
+      <a class="btn" href="https://buy.stripe.com/PLACEHOLDER_AGENCY">Buy</a>
+    </div>
+
   </div>
+</section>
 
-  <div class="card">
-    <h3>Pro</h3>
-    <p>$599 / month</p>
-
-    <a class="btn btn-primary" href="#">Buy</a>
-  </div>
-
-  <div class="card">
-    <h3>Agency</h3>
-    <p>$1199 / month</p>
-
-    <a class="btn btn-ghost" href="#">Buy</a>
-  </div>
-</div>
+<footer>
+  © 2026 ONYX369 — AI Growth Platform
+</footer>
 
 </body>
 </html>
