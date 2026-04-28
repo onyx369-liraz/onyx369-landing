@@ -1,204 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ONYX369 — AI Growth Platform</title>
-
 <style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#050505;
-  color:#fff;
-}
-
-/* Background glow */
-body::before {
-  content:"";
-  position:fixed;
-  top:50%;
-  left:50%;
-  width:800px;
-  height:800px;
-  transform:translate(-50%,-50%);
-  background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
-  z-index:-1;
-}
-
-/* Header */
-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid rgba(255,255,255,0.05);
-}
-
-.logo {
-  font-weight:bold;
-  letter-spacing:2px;
-  color:#D4AF37;
-}
-
-nav a {
-  margin:0 15px;
-  color:#aaa;
-  text-decoration:none;
-}
-
-.btn {
-  padding:10px 20px;
-  border-radius:999px;
-  background:#D4AF37;
-  color:#000;
-  text-decoration:none;
-}
-
-/* Hero */
-.hero {
-  text-align:center;
-  padding:100px 20px;
-}
-
-.hero h1 {
-  font-size:48px;
-}
-
-.hero span {
-  color:#D4AF37;
-}
-
-.hero p {
-  color:#aaa;
-  margin:20px 0;
-}
-
-/* Dashboard mock */
-.dashboard {
-  max-width:1000px;
-  margin:40px auto;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px;
-  padding:30px;
-}
-
-/* Cards */
-.cards {
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.card {
-  flex:1;
-  min-width:250px;
-  background:rgba(255,255,255,0.03);
-  padding:20px;
-  border-radius:15px;
-  border:1px solid rgba(255,255,255,0.1);
-}
-
-/* Pricing */
-.pricing {
-  padding:80px 20px;
-  text-align:center;
-}
-
-.price-cards {
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.price-card {
-  width:260px;
-  padding:30px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.1);
-}
-
-/* Footer */
-footer {
-  padding:40px;
-  text-align:center;
-  color:#777;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#D4AF37;--gd:rgba(212,175,55,.15);--gr:#34D399;--bg:#050505;--s:rgba(255,255,255,.04);--b:rgba(212,175,55,.14);--t:#FAFAFA;--m:#8D8D93}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+#c{position:fixed;inset:0;z-index:0;pointer-events:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--g);opacity:.6}
+header{position:sticky;top:0;z-index:99;backdrop-filter:blur(20px);background:rgba(5,5,5,.88);border-bottom:1px solid rgba(212,175,55,.08)}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1160px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px}
+.lw{font-size:15px;font-weight:300;letter-spacing:3px;text-transform:uppercase}.lw b{color:var(--g);font-weight:200;opacity:.55}
+nav{display:flex;align-items:center;gap:28px}
+nav a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--m);transition:color .2s}
+nav a:hover{color:var(--t)}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s}
+.btn-g{background:linear-gradient(135deg,#D4AF37,#F0CE55);color:#000;box-shadow:0 6px 20px rgba(212,175,55,.25)}
+.btn-g:hover{box-shadow:0 10px 32px rgba(212,175,55,.45);transform:translateY(-2px)}
+.btn-o{border:1px solid rgba(212,175,55,.25);color:var(--m)}
+.btn-o:hover{border-color:rgba(212,175,55,.5);color:var(--t)}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{width:22px;height:1.5px;background:var(--m);border-radius:2px;transition:.3s}
+.mnav{display:none;flex-direction:column;background:rgba(8,8,8,.97);border-bottom:1px solid rgba(212,175,55,.08)}
+.mnav a{padding:13px 24px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--m);border-bottom:1px solid rgba(255,255,255,.04);transition:color .2s}
+.mnav a:hover{color:var(--t)}
+.mnav.open{display:flex}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;background-image:radial-gradient(circle,rgba(212,175,55,.04) 1px,transparent 1px);background-size:32px 32px}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border-radius:100px;border:1px solid rgba(52,211,153,.28);background:rgba(52,211,153,.06);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gr);margin-bottom:36px}
+.bdot{width:6px;height:6px;background:var(--gr);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+h1{font-size:clamp(2.8rem,7vw,5.2rem);font-weight:200;letter-spacing:-2px;line-height:1.08;margin-bottom:22px}
+h1 em{font-style:normal;display:block;background:linear-gradient(135deg,#D4AF37 0%,#F0CE55 50%,#D4AF37 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:clamp(14px,2.5vw,17px);color:rgba(250,250,250,.45);max-width:520px;margin:0 auto 44px;line-height:1.75;font-weight:300}
+.acts{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.scrl{margin-top:72px;display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(250,250,250,.2);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.scrl svg{animation:bounce 2s ease-in-out infinite}
+.prev{padding:80px 24px 100px}
+.sh{text-align:center;margin-bottom:48px}
+.sh h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:200;letter-spacing:-1px;margin-top:12px}
+.sh p{color:rgba(250,250,250,.38);margin-top:10px;font-size:14px;font-weight:300}
+.frame{border-radius:14px;overflow:hidden;border:1px solid var(--b);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 60px rgba(212,175,55,.07);max-width:1060px;margin:0 auto}
+.fbar{background:#181818;padding:9px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.05)}
+.fdots{display:flex;gap:5px}
+.fdots span{width:9px;height:9px;border-radius:50%}
+.furl{flex:1;background:rgba(255,255,255,.06);border-radius:5px;padding:4px 10px;font-size:10px;color:rgba(255,255,255,.28)}
+.dash{display:flex;height:460px;background:#0A0A0A}
+.dsb{width:170px;min-width:170px;background:#0D0D0D;border-right:1px solid rgba(212,175,55,.07);padding:18px 0;display:flex;flex-direction:column}
+.dsb-logo{padding:0 14px 16px;border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:14px;font-size:11px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:#FAFAFA}
+.dsb-logo b{color:var(--g);font-weight:200;opacity:.5}
+.dni{padding:7px 14px;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:7px;cursor:pointer}
+.dni.on{background:rgba(212,175,55,.07);color:var(--g);border-right:2px solid var(--g)}
+.dnd{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}
+.dni.on .dnd{opacity:1}
+.dmain{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.dtop{padding:9px 18px;border-bottom:1px solid rgba(212,175,55,.06);display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.92)}
+.dtop-title{font-size:12px;font-weight:300}
+.dstatus{display:flex;align-items:center;gap:5px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gr)}
+.dstatus-dot{width:5px;height:5px;background:var(--gr);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+.dcontent{flex:1;padding:14px 18px;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.dc{background:rgba(255,255,255,.03);border:1px solid rgba(212,175,55,.09);border-radius:9px;padding:11px;position:relative;overflow:hidden}
+.dc::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:rgba(255,255,255,.07)}
+.dcl{font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.dcv{font-size:17px;font-weight:300;color:var(--g)}
+.dct{font-size:8px;color:var(--gr);margin-top:3px}
+.dbot{display:grid;grid-template-columns:2fr 1fr;gap:9px;flex:1}
+.dchart{background:rgba(255,255,255,.025);border:1px solid rgba(212,175,55,.07);border-radius:9px;padding:11px;overflow:hidden}
+.dclbl{font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--g);opacity:.65;margin-bottom:7px}
+.dact{background:rgba(255,255,255,.025);border:1px solid rgba(212,175,55,.07);border-radius:9px;padding:11px}
+.dai{display:flex;align-items:flex-start;gap:5px;margin-bottom:7px}
+.daidot{width:5px;height:5px;border-radius:50%;margin-top:3.5px;flex-shrink:0}
+.dait{font-size:8.5px;color:rgba(255,255,255,.45);line-height:1.4}
+.eng{padding:100px 24px}
+.egrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.ec{padding:34px 26px;border-radius:18px;border:1px solid var(--b);background:var(--s);transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+.ec::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:rgba(255,255,255,.1)}
+.ec:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.35);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(212,175,55,.1)}
+.eicon{width:44px;height:44px;border-radius:11px;background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.18);display:grid;place-items:center;font-size:18px;margin-bottom:22px;color:var(--g)}
+.ec h3{font-size:17px;font-weight:300;letter-spacing:-.3px;margin-bottom:10px}
+.ec p{font-size:13px;color:rgba(250,250,250,.4);line-height:1.7;font-weight:300}
+.etag{display:inline-block;margin-top:18px;padding:3px 11px;border-radius:100px;border:1px solid rgba(212,175,55,.18);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(212,175,55,.55)}
+.pricing{padding:100px 24px;background:rgba(212,175,55,.02);border-top:1px solid rgba(212,175,55,.07);border-bottom:1px solid rgba(212,175,55,.07)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px;align-items:start}
+.pc{border-radius:18px;border:1px solid var(--b);padding:34px 26px;background:var(--s);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.pc::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:rgba(255,255,255,.08)}
+.pc:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.pc.feat{border-color:rgba(212,175,55,.38);background:rgba(212,175,55,.055);box-shadow:0 0 50px rgba(212,175,55,.11);transform:scale(1.02)}
+.pc.feat:hover{transform:scale(1.02) translateY(-4px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(212,175,55,.18)}
+.pbadge{position:absolute;top:14px;right:14px;padding:3px 10px;border-radius:100px;background:var(--g);color:#000;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.ptier{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--g);opacity:.6;margin-bottom:14px}
+.pprice{font-size:40px;font-weight:200;letter-spacing:-2px;line-height:1;margin-bottom:4px}
+.pprice span{font-size:14px;font-weight:400;letter-spacing:0;color:var(--m)}
+.pper{font-size:11px;color:var(--m);margin-bottom:24px}
+.pdiv{height:1px;background:rgba(212,175,55,.09);margin-bottom:22px}
+.pfeats{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:9px}
+.pfeats li{font-size:13px;color:rgba(250,250,250,.6);display:flex;align-items:center;gap:9px;font-weight:300}
+.pfeats li::before{content:'✓';color:var(--gr);font-size:10px;flex-shrink:0}
+.pcta{display:block;text-align:center;padding:12px 22px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s}
+.pcta.out{border:1px solid rgba(212,175,55,.28);color:var(--g)}.pcta.out:hover{border-color:var(--g);background:rgba(212,175,55,.07)}
+.pcta.sol{background:var(--g);color:#000;box-shadow:0 8px 22px rgba(212,175,55,.24)}
+.pcta.sol:hover{box-shadow:0 12px 38px rgba(212,175,55,.44);transform:translateY(-1px)}
+.fcta{padding:120px 24px;text-align:center;position:relative}
+.fglow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:260px;background:var(--g);opacity:.055;filter:blur(100px);border-radius:50%;pointer-events:none}
+.fcta h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:200;letter-spacing:-1.5px;line-height:1.15;margin-bottom:22px}
+.fcta p{font-size:15px;color:rgba(250,250,250,.38);margin-bottom:44px;font-weight:300}
+footer{border-top:1px solid rgba(212,175,55,.08);padding:36px 24px}
+.fi{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.fb{font-size:13px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:rgba(250,250,250,.45)}
+.fb b{color:var(--g);font-weight:200;opacity:.55}
+.fl{display:flex;gap:22px}
+.fl a{font-size:11px;color:rgba(250,250,250,.28);transition:color .2s}
+.fl a:hover{color:var(--m)}
+.fc{font-size:10px;color:rgba(250,250,250,.18)}
+.fi-el{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.fi-el.vis{opacity:1;transform:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:768px){
+  nav{display:none}.hbg{display:flex}
+  .egrid,.pgrid{grid-template-columns:1fr}
+  .pc.feat{transform:none}.pc.feat:hover{transform:translateY(-4px)}
+  .dsb{display:none}.dcards{grid-template-columns:1fr 1fr}.dbot{grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
-
+<canvas id="c"></canvas>
 <header>
-  <div class="logo">ONYX369</div>
+<div class="hd">
+  <a href="/" class="logo">
+    <svg width="26" height="26" viewBox="0 0 56 56" fill="none"><polygon points="28,5 50,17.5 50,42.5 28,55 6,42.5 6,17.5" stroke="#D4AF37" stroke-width="2" fill="none"/><polygon points="28,20 39,26.5 39,34 28,40.5 17,34 17,26.5" fill="#D4AF37"/></svg>
+    <span class="lw">ONYX<b>369</b></span>
+  </a>
   <nav>
-    <a href="#">Platform</a>
-    <a href="#">Pricing</a>
+    <a href="#engines">Platform</a>
+    <a href="#engines">Engines</a>
+    <a href="#pricing">Pricing</a>
     <a href="https://app.onyx369.ai/client-access">Login</a>
+    <a href="#pricing" class="btn btn-g">Start Growing</a>
   </nav>
-  <a class="btn" href="#pricing">Start Growing</a>
+  <button class="hbg" onclick="document.getElementById('mn').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<nav class="mnav" id="mn">
+  <a href="#engines">Platform</a><a href="#engines">Engines</a>
+  <a href="#pricing">Pricing</a>
+  <a href="https://app.onyx369.ai/client-access">Login</a>
+  <a href="#pricing">Start Growing</a>
+</nav>
 </header>
 
 <section class="hero">
-  <h1>AI Growth Platform<br><span>In a different league.</span></h1>
-  <p>Content. Leads. Revenue. One intelligent system.</p>
-  <a class="btn" href="#pricing">Start Growing</a>
+<div class="wrap">
+  <div class="badge"><span class="bdot"></span>AI System Online</div>
+  <h1>Your Business.<br><em>Autonomous.</em></h1>
+  <p class="sub">ONYX369 runs your growth engine while you focus on scale.<br>Content. Leads. Revenue. One intelligent operating layer.</p>
+  <div class="acts">
+    <a href="#pricing" class="btn btn-g">Start Growing <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="https://app.onyx369.ai/client-access" class="btn btn-o">Client Login</a>
+  </div>
+  <div class="scrl"><span>Explore</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
 </section>
 
-<section class="dashboard">
-  <div class="cards">
-    <div class="card">
-      <h3>Content Engine</h3>
-      <p>AI content that converts</p>
-      <h2>128</h2>
+<section class="prev" id="preview">
+<div class="wrap">
+  <div class="sh fi-el"><span class="lbl">Command Center</span><h2>Your business runs here.</h2><p>Real-time intelligence. Automated execution. Full visibility.</p></div>
+  <div class="frame fi-el">
+    <div class="fbar">
+      <div class="fdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
+      <div class="furl">app.onyx369.ai/client-portal</div>
     </div>
-
-    <div class="card">
-      <h3>Leads Engine</h3>
-      <p>Automated lead generation</p>
-      <h2>342</h2>
-    </div>
-
-    <div class="card">
-      <h3>Revenue Engine</h3>
-      <p>Growth optimization</p>
-      <h2>$24,580</h2>
+    <div class="dash">
+      <div class="dsb">
+        <div class="dsb-logo">ONYX<b>369</b></div>
+        <div class="dni on"><span class="dnd"></span>Overview</div>
+        <div class="dni"><span class="dnd"></span>Ask AI</div>
+        <div class="dni"><span class="dnd"></span>Content</div>
+        <div class="dni"><span class="dnd"></span>Leads</div>
+        <div class="dni"><span class="dnd"></span>Invoices</div>
+        <div class="dni"><span class="dnd"></span>Reports</div>
+      </div>
+      <div class="dmain">
+        <div class="dtop">
+          <span class="dtop-title">Command Center</span>
+          <div class="dstatus"><span class="dstatus-dot"></span>Live Sync</div>
+        </div>
+        <div class="dcontent">
+          <div class="dcards">
+            <div class="dc"><div class="dcl">Content Engine</div><div class="dcv">128</div><div class="dct">Pieces Created &nbsp;↑ +31%</div></div>
+            <div class="dc"><div class="dcl">Leads Engine</div><div class="dcv" style="color:#34D399">342</div><div class="dct">New Leads &nbsp;↑ +22%</div></div>
+            <div class="dc"><div class="dcl">Revenue Engine</div><div class="dcv" style="color:rgba(250,250,250,.9)">$24,580</div><div class="dct" style="color:#34D399">Revenue &nbsp;↑ +18.4%</div></div>
+          </div>
+          <div class="dbot">
+            <div class="dchart">
+              <div class="dclbl">Performance Overview</div>
+              <svg width="100%" height="110" viewBox="0 0 420 110" fill="none" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4AF37" stop-opacity=".22"/><stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/></linearGradient>
+                  <linearGradient id="sl" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#D4AF37" stop-opacity=".45"/><stop offset="100%" stop-color="#34D399" stop-opacity=".9"/></linearGradient>                </defs>
+                <path d="M0,95 C30,90 60,85 100,74 C140,63 170,55 210,44 C250,33 280,24 320,16 C360,8 390,4 420,1 L420,110 L0,110 Z" fill="url(#lg)"/>
+                <path d="M0,95 C30,90 60,85 100,74 C140,63 170,55 210,44 C250,33 280,24 320,16 C360,8 390,4 420,1" stroke="url(#sl)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="100" cy="74" r="2.5" fill="#D4AF37" opacity=".7"/>
+                <circle cx="210" cy="44" r="2.5" fill="#D4AF37" opacity=".8"/>
+                <circle cx="320" cy="16" r="2.5" fill="#34D399" opacity=".9"/>
+                <circle cx="420" cy="1" r="3.5" fill="#34D399"/>
+                <circle cx="420" cy="1" r="7" fill="#34D399" opacity=".18"/>
+              </svg>
+            </div>
+            <div class="dact">
+              <div class="dclbl">Live AI Operations</div>
+              <div class="dai"><span class="daidot" style="background:#D4AF37;box-shadow:0 0 4px #D4AF37"></span><span class="dait">Content engine optimized post sequence</span></div>
+              <div class="dai"><span class="daidot" style="background:#34D399;box-shadow:0 0 4px #34D399"></span><span class="dait">Lead engine scored 12 opportunities</span></div>
+              <div class="dai"><span class="daidot" style="background:#D4AF37;box-shadow:0 0 4px #D4AF37"></span><span class="dait">Revenue signals detected</span></div>
+              <div class="dai"><span class="daidot" style="background:#34D399;box-shadow:0 0 4px #34D399"></span><span class="dait">ONYX daily growth scan complete</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 </section>
 
-<section id="pricing" class="pricing">
-  <h2>Pricing</h2>
-
-  <div class="price-cards">
-
-    <div class="price-card">
-      <h3>Starter</h3>
-      <h1>$369</h1>
-      <a class="btn" href="https://buy.stripe.com/PLACEHOLDER_STARTER">Buy</a>
-    </div>
-
-    <div class="price-card">
-      <h3>Pro</h3>
-      <h1>$599</h1>
-      <a class="btn" href="https://buy.stripe.com/PLACEHOLDER_PRO">Buy</a>
-    </div>
-
-    <div class="price-card">
-      <h3>Agency</h3>
-      <h1>$1199</h1>
-      <a class="btn" href="https://buy.stripe.com/PLACEHOLDER_AGENCY">Buy</a>
-    </div>
-
+<section class="eng" id="engines">
+<div class="wrap">
+  <div class="sh fi-el"><span class="lbl">The System</span><h2>Three engines. One operating layer.</h2><p>Each engine works independently and amplifies the others.</p></div>
+  <div class="egrid">
+    <div class="ec fi-el"><div class="eicon">✦</div><h3>Content Engine</h3><p>AI-generated authority content tailored to your brand, audience, and goals. Published on demand. Built to compound.</p><span class="etag">Content · Authority · Reach</span></div>
+    <div class="ec fi-el"><div class="eicon">◇</div><h3>Lead Engine</h3><p>Captures, scores, and qualifies leads using AI signal analysis. High-intent opportunities surface first.</p><span class="etag">Capture · Score · Convert</span></div>
+    <div class="ec fi-el"><div class="eicon">$</div><h3>Revenue Engine</h3><p>Tracks pipeline momentum and close-rate potential. ONYX identifies revenue friction before it costs you deals.</p><span class="etag">Pipeline · Momentum · Close</span></div>
   </div>
+</div>
+</section>
+
+<section class="pricing" id="pricing">
+<div class="wrap">
+  <div class="sh fi-el"><span class="lbl">Pricing</span><h2>Straightforward. Scalable.</h2><p>No contracts. Cancel anytime.</p></div>
+  <div class="pgrid">
+    <div class="pc fi-el">
+      <div class="ptier">Starter</div>
+      <div class="pprice">$369<span>/mo</span></div><div class="pper">billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats"><li>Content Engine (10 posts/mo)</li><li>Lead Engine (up to 100 leads)</li><li>Revenue dashboard</li><li>AI activity feed</li><li>Client command center</li><li>Monthly report</li></ul>
+      <a href="https://buy.stripe.com/PLACEHOLDER_STARTER" class="pcta out">Get Started</a>
+    </div>
+    <div class="pc feat fi-el">
+      <span class="pbadge">Most Popular</span>
+      <div class="ptier">Pro</div>
+      <div class="pprice">$599<span>/mo</span></div><div class="pper">billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats"><li>Content Engine (30 posts/mo)</li><li>Unlimited lead engine</li><li>Revenue intelligence + forecasts</li><li>AI execution queue</li><li>Priority lead scoring</li><li>Ask ONYX AI (chat)</li><li>Weekly + monthly reports</li></ul>
+      <a href="https://buy.stripe.com/PLACEHOLDER_PRO" class="pcta sol">Start Growing</a>
+    </div>
+    <div class="pc fi-el">
+      <div class="ptier">Agency</div>
+      <div class="pprice">$1,199<span>/mo</span></div><div class="pper">billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats"><li>Everything in Pro</li><li>Up to 5 client portals</li><li>White-label dashboard</li><li>Agency-level reporting</li><li>Dedicated AI configuration</li><li>Priority support</li></ul>
+      <a href="https://buy.stripe.com/PLACEHOLDER_AGENCY" class="pcta out">Contact Sales</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="fcta">
+<div class="fglow"></div>
+<div class="wrap fi-el">
+  <span class="lbl" style="display:block;margin-bottom:22px">Get Started</span>
+  <h2>Ready to build growth<br><em style="font-style:normal;background:linear-gradient(135deg,#D4AF37,#F0CE55);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">like a system?</em></h2>
+  <p>ONYX369 is live, synced, and ready to run your growth engine.</p>
+  <a href="https://buy.stripe.com/PLACEHOLDER_PRO" class="btn btn-g">Start Growing <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
 </section>
 
 <footer>
-  © 2026 ONYX369 — AI Growth Platform
+<div class="fi">
+  <div class="fb">ONYX<b>369</b></div>
+  <div class="fl"><a href="mailto:hello@onyx369.ai">hello@onyx369.ai</a><a href="https://app.onyx369.ai/client-access">Client Login</a></div>
+  <div class="fc">© 2026 ONYX369. All rights reserved.</div>
+</div>
 </footer>
 
+<script>
+(function(){
+  var cv=document.getElementById('c'),cx=cv.getContext('2d'),W,H,pts;
+  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  function mk(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.1+.3,a:Math.random()*.35+.08}}
+  function init(){resize();pts=Array.from({length:55},mk)}
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    for(var p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(212,175,55,'+p.a+')';cx.fill()}
+    for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle='rgba(212,175,55,'+(0.05*(1-d/110))+')';cx.lineWidth=.5;cx.stroke()}}
+    requestAnimationFrame(draw)
+  }
+  init();draw();window.addEventListener('resize',init);
+})();
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.fi-el').forEach(function(el){obs.observe(el)});
+</script>
 </body>
 </html>
